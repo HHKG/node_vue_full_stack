@@ -15,7 +15,6 @@ var todoSchema=new mongoose.Schema({
 //往数据库中存储数据
 var Todo=mongoose.model('Todo',todoSchema);
 
-
 //测试数据库存储
 // Todo({item:'Hello Everyone!'}).save(function(err,data){
 //     if(err) throw err;
@@ -32,7 +31,6 @@ var urlencodedParser=bodyParser.urlencoded({extended:false});
 // ];
 
 module.exports=function(app){
-	
 	//浏览器地址输入：localhost:3000/todo时执行这里的函数
     app.get('/todo',function(req,res){
 		
@@ -46,6 +44,7 @@ module.exports=function(app){
 
     //传递数据(获取页面传递过来的信息，存储到数据库里面去)
     app.post('/todo',urlencodedParser,function(req,res){
+		console.log(req.body)
         Todo(req.body).save(function(err,data){
             if(err) throw err;
             res.json(data.body);//把数据回调给成功回调函数
