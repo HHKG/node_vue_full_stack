@@ -25,7 +25,7 @@
     methods:{
      async save(){
        console.log("save")
-        const res=await axios.post('categorise',this.formData);
+        const res=await axios.post('http://localhost:3000/admin/categorise',this.formData);
         this.$router.push('/list');
         this.$message({
           type:"success",
