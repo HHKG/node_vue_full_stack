@@ -14,7 +14,9 @@ class App extends Component {
         return (
             <Router>
                 <div className="app">
-                    {}
+                    {router.map(({path,component,exact=true,routes=[]},key)=>{
+						<Route key={key} path={path} exact={exact}></Route>	
+					})}
                 </div>
             </Router>
         );
