@@ -65,7 +65,7 @@
         console.log('正在查找' + this.getValue + '...')
       },
       gotoLogin() {
-        this.$router.replace('/Login');
+        this.$router.push('/Login');
       }
     }
   }
