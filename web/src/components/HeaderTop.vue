@@ -62,7 +62,7 @@
           });
           return false;
         }
-        console.log('正在查找' + this.getValue + '...')
+        console.log('正在查找' + this.getValue + '...');
       },
       gotoLogin() {
         this.$router.push('/Login');

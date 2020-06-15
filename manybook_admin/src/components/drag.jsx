@@ -72,7 +72,7 @@ class EidtImage extends Component {
       image.crossOrigin = "anonymous";//解决图片跨域
       image.src = obj.src;
       image.onload = function () {
-        that.drawText(cansText,canva);
+        // that.drawText(cansText,canva);
         cansText.drawImage(image, obj.x, obj.y, obj.width, obj.height);
         obj.image = image;
         if (obj.selected) {

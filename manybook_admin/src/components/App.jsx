@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import React, { Component,Suspense} from 'react';
+import { BrowserRouter as Router, Route,Switch} from "react-router-dom";
 import router from '../routes/index';
+import { Spin } from 'antd';
 
 class App extends Component {
 
@@ -14,9 +15,17 @@ class App extends Component {
         return (
             <Router>
                 <div className="app">
-                    {router.map(({path,component,exact=true,routes=[]},key)=>{
-						<Route key={key} path={path} exact={exact}></Route>	
-					})}
+                <Router>
+                    <Suspense fallback={<Spin></Spin>}>
+                        <Switch>
+                            {
+                                router.map((item,key)=>{
+                                    return <Route path={item.path} key={key} component={item.component} exact={item.exact?item.exact:false}></Route>;
+                                })
+                            }
+                        </Switch>
+                    </Suspense>
+                </Router>
                 </div>
             </Router>
         );
